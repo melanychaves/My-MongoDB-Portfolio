@@ -1,0 +1,468 @@
+db
+test
+use ClaseDB2
+switched to db ClaseDB2
+ 
+ 
+db
+ClaseDB2
+show dbs
+DBClase1   8.00 KiB
+admin     40.00 KiB
+config    96.00 KiB
+local     40.00 KiB
+melany    40.00 KiB
+use webstore
+switched to db webstore
+db
+webstore
+show dbs
+DBClase1    8.00 KiB
+admin      40.00 KiB
+config    108.00 KiB
+local      40.00 KiB
+melany     40.00 KiB
+db.productos.insert({"name";"laptop"})
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.productos.insert({"name":"laptop"})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("649e212b51ccdee8d9676024")
+  }
+}
+db.dropDatabase()
+{ ok: 1, dropped: 'webstore' }
+use Clase2InsertOne
+switched to db Clase2InsertOne
+db.books.insertMany({})
+MongoInvalidArgumentError: Argument "docs" must be an array of documents
+db.books.insertOne({
+title: 'MongoDB InsertOne',
+isbn: '0-7617-6154-3'
+});
+{
+  acknowledged: true,
+  insertedId: ObjectId("649e24b551ccdee8d9676025")
+}
+db.books.find()
+{
+  _id: ObjectId("649e24b551ccdee8d9676025"),
+  title: 'MongoDB InsertOne',
+  isbn: '0-7617-6154-3'
+}
+db.books.insertOne({
+_id: 1,
+title: "Masterig Big Data",
+isbn: "0-9270-4986-4"
+});
+{
+  acknowledged: true,
+  insertedId: 1
+}
+db.books.find()
+{
+  _id: ObjectId("649e24b551ccdee8d9676025"),
+  title: 'MongoDB InsertOne',
+  isbn: '0-7617-6154-3'
+}
+{
+  _id: 1,
+  title: 'Masterig Big Data',
+  isbn: '0-9270-4986-4'
+}
+db.books.insertOne({
+_id: 1,
+})
+MongoServerError: E11000 duplicate key error collection: Clase2InsertOne.books index: _id_ dup key: { _id: 1 }
+db.books.insertOne({
+_id: 1,
+title: "MongoDB for JS Developers",
+isbn: "0-4925-3790-9"
+});
+MongoServerError: E11000 duplicate key error collection: Clase2InsertOne.books index: _id_ dup key: { _id: 1 }
+db.books.find()
+{
+  _id: ObjectId("649e24b551ccdee8d9676025"),
+  title: 'MongoDB InsertOne',
+  isbn: '0-7617-6154-3'
+}
+{
+  _id: 1,
+  title: 'Masterig Big Data',
+  isbn: '0-9270-4986-4'
+}
+use Clase2InsertMany
+switched to db Clase2InsertMany
+db.books.insertMany({})
+MongoInvalidArgumentError: Argument "docs" must be an array of documents
+db.books.insertMany([
+{title: "NoSQL Distilled", isbn: "0-4696-7030-4"},
+{title: "NoSQL in 7 Days", isbn: "0-4086-6859-8"},
+{title: "NoSQL Database", isbn: "0-2504-6932-4"},
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("649e29e151ccdee8d9676026"),
+    '1': ObjectId("649e29e151ccdee8d9676027"),
+    '2': ObjectId("649e29e151ccdee8d9676028")
+  }
+}
+db.books.find()
+{
+  _id: ObjectId("649e29e151ccdee8d9676026"),
+  title: 'NoSQL Distilled',
+  isbn: '0-4696-7030-4'
+}
+{
+  _id: ObjectId("649e29e151ccdee8d9676027"),
+  title: 'NoSQL in 7 Days',
+  isbn: '0-4086-6859-8'
+}
+{
+  _id: ObjectId("649e29e151ccdee8d9676028"),
+  title: 'NoSQL Database',
+  isbn: '0-2504-6932-4'
+}
+db.books.insertMany ([
+  {_id: 1, title: "SQL Basics", isbn: "0-7925-6962-8"},
+  {_id: 2, title: "SQL Advanced", isbn: "0-1184-7778-1"}
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2
+  }
+}
+db.books.find()
+{
+  _id: ObjectId("649e29e151ccdee8d9676026"),
+  title: 'NoSQL Distilled',
+  isbn: '0-4696-7030-4'
+}
+{
+  _id: ObjectId("649e29e151ccdee8d9676027"),
+  title: 'NoSQL in 7 Days',
+  isbn: '0-4086-6859-8'
+}
+{
+  _id: ObjectId("649e29e151ccdee8d9676028"),
+  title: 'NoSQL Database',
+  isbn: '0-2504-6932-4'
+}
+{
+  _id: 1,
+  title: 'SQL Basics',
+  isbn: '0-7925-6962-8'
+}
+{
+  _id: 2,
+  title: 'SQL Advanced',
+  isbn: '0-1184-7778-1'
+}
+db.books.insertMany ([
+])
+MongoInvalidArgumentError: Invalid BulkOperation, Batch cannot be empty
+db.books.insertMany ([
+  {_id: 2, title: "SQL Performance Tuning", isbn: "0-6799-2974-6"},
+  {_id: 3, title: "SQL Index", isbn:"0-5097-1723-3"}
+]);
+MongoBulkWriteError: E11000 duplicate key error collection: Clase2InsertMany.books index: _id_ dup key: { _id: 2 }
+use Clase2UpdateOne
+switched to db Clase2UpdateOne
+db.products.insertMany([
+{"_id": 1, "name"; "xPhone", "price": 799, "releaseDate": ISODate("2011-05-14"), "spec": {"ram": 4, "screen": 6.5, "cpu": 2.66}, "color":["white","black"],"storage":[64,128,256]},
+{"_id": 2, "name": "xTablet", "price": 899, "reseaseDate": ISODate("2011-09-01"),"spec": {"ram": 16, "screen": 9.5, "cpu": 3.66}, "color": ["white", "black", "purple"], "storage":[128,256,512]},
+{"_id": 3, "name": "SmartTablet", "price": 899, "releaseDate": ISODate("2015-01-14"), "spec": {"ram": 12, "screen": 9.7, "cpu": 3.6}, "color": ["blue"], "storage": [16,64,128]},
+{"_id": 4, "name": "SmartPhone", "price": 699, "releaseDate": ISODate("2020-05-14"), "spec": {"ram": 8, "screen": 9.7, "cpu": 1.66}, "color": ["white", "orange", "gold","gray"], "storage": [128,265,10224]},                                                                                                                                                  
+{"_id": 5, "name": "SmartPhone", "price": 599, "realeaseDate": ISODate("2022-09-14"), "spec": {"ram": 4, "screen":5.7, "cpu": 1.66}, "color": ["white", "orange", "gold", "gray"], "storage": [128,256]}
+])
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.products.insertMany([
+{"_id": 1, "name"; "xPhone", "price": 799, "releaseDate": ISODate("2011-05-14"), "spec": {"ram": 4, "screen": 6.5, "cpu": 2.66}, "color":["white","black"],"storage":[64,128,256]},
+{"_id": 2, "name": "xTablet", "price": 899, "reseaseDate": ISODate("2011-09-01"),"spec": {"ram": 16, "screen": 9.5, "cpu": 3.66}, "color": ["white", "black", "purple"], "storage":[128,256,512]},
+{"_id": 3, "name": "SmartTablet", "price": 899, "releaseDate": ISODate("2015-01-14"), "spec": {"ram": 12, "screen": 9.7, "cpu": 3.6}, "color": ["blue"], "storage": [16,64,128]},
+{"_id": 4, "name": "SmartPhone", "price": 699, "releaseDate": ISODate("2020-05-14"), "spec": {"ram": 8, "screen": 9.7, "cpu": 1.66}, "color": ["white", "orange", "gold","gray"], "storage": [128,265,10224]},                                                                                                                                                  
+{"_id": 5, "name": "SmartPhone", "price": 599, "realeaseDate": ISODate("2022-09-14"), "spec": {"ram": 4, "screen":5.7, "cpu": 1.66}, "color": ["white", "orange", "gold", "gray"], "storage": [128,256]}
+]);
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.products.insertMany([
+{"_id": 1, "name"; "xPhone", "price": 799, "releaseDate": ISODate("2011-05-14"), "spec": {"ram": 4, "screen": 6.5, "cpu": 2.66}, "color":["white","black"],"storage":[64,128,256]},
+{"_id": 2, "name": "xTablet", "price": 899, "reseaseDate": ISODate("2011-09-01"),"spec": {"ram": 16, "screen": 9.5, "cpu": 3.66}, "color": ["white", "black", "purple"], "storage":[128,256,512]},
+{"_id": 3, "name": "SmartTablet", "price": 899, "releaseDate": ISODate("2015-01-14"), "spec": {"ram": 12, "screen": 9.7, "cpu": 3.6}, "color": ["blue"], "storage": [16,64,128]},
+{"_id": 4, "name": "SmartPhone", "price": 699, "releaseDate": ISODate("2020-05-14"), "spec": {"ram": 8, "screen": 9.7, "cpu": 1.66}, "color": ["white", "orange", "gold","gray"], "storage": [128,265,10224]},                                                                                                                                                  
+{"_id": 5, "name": "SmartPhone", "price": 599, "realeaseDate": ISODate("2022-09-14"), "spec": {"ram": 4, "screen":5.7, "cpu": 1.66}, "color": ["white", "orange", "gold", "gray"], "storage": [128,256]}
+]);
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.products.insertMany([
+{"_id": 1,"name";"xPhone", "price": 799,"releaseDate": ISODate("2011-05-14"),"spec": {"ram": 4, "screen": 6.5, "cpu": 2.66},"color":["white","black"],"storage":[64,128,256]},
+{"_id": 2,"name":"xTablet", "price": 899,"reseaseDate": ISODate("2011-09-01"),"spec": {"ram": 16, "screen": 9.5, "cpu": 3.66},"color":["white","black","purple"],"storage":[128,256,512]},
+{"_id": 3,"name":"SmartTablet", "price": 899,"releaseDate": ISODate("2015-01-14"),"spec": {"ram": 12, "screen": 9.7, "cpu": 3.6},"color":["blue"],"storage":[16,64,128]},
+{"_id": 4,"name":"SmartPhone", "price": 699,"releaseDate": ISODate("2020-05-14"),"spec": {"ram": 8, "screen": 9.7, "cpu": 1.66},"color":["white","orange","gold","gray"],"storage":[128,265,10224]},                                                                                                                                                  
+{"_id": 5,"name":"SmartPhone", "price": 599,"realeaseDate": ISODate("2022-09-14"),"spec": {"ram": 4, "screen":5.7, "cpu": 1.66},"color":["white","orange","gold","gray"],"storage":[128,256]}
+])
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.products.insertMany([
+{"_id": 1,"name":"xPhone", "price": 799,"releaseDate": ISODate("2011-05-14"),"spec": {"ram": 4, "screen": 6.5, "cpu": 2.66},"color":["white","black"],"storage":[64,128,256]},
+{"_id": 2,"name":"xTablet", "price": 899,"reseaseDate": ISODate("2011-09-01"),"spec": {"ram": 16, "screen": 9.5, "cpu": 3.66},"color":["white","black","purple"],"storage":[128,256,512]},
+{"_id": 3,"name":"SmartTablet", "price": 899,"releaseDate": ISODate("2015-01-14"),"spec": {"ram": 12, "screen": 9.7, "cpu": 3.6},"color":["blue"],"storage":[16,64,128]},
+{"_id": 4,"name":"SmartPhone", "price": 699,"releaseDate": ISODate("2020-05-14"),"spec": {"ram": 8, "screen": 9.7, "cpu": 1.66},"color":["white","orange","gold","gray"],"storage":[128,265,10224]},                                                                                                                                                  
+{"_id": 5,"name":"SmartPhone", "price": 599,"realeaseDate": ISODate("2022-09-14"),"spec": {"ram": 4, "screen":5.7, "cpu": 1.66},"color":["white","orange","gold","gray"],"storage":[128,256]}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.updateOne({
+_id: 1
+}, {
+$set: {
+price: 899
+}
+})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.products.findOne({_id: 1}, {name: 1, price: 1})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 899
+}
+db.products.find({price: 899}, {name: 1, price: 1})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: 899
+}
+{
+  _id: 2,
+  name: 'xTablet',
+  price: 899
+}
+{
+  _id: 3,
+  name: 'SmartTablet',
+  price: 899
+}
+db.products.updateOne ({ price: 899}, {$set: { price: null }})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.products.find({_id}, {name :1, price: 1})
+ReferenceError: _id is not defined
+db.products.find({_id: 1}, {name :1, price: 1})
+{
+  _id: 1,
+  name: 'xPhone',
+  price: null
+}
+db.products.find({_id:4}, {name: 1, spec:1})
+{
+  _id: 4,
+  name: 'SmartPhone',
+  spec: {
+    ram: 8,
+    screen: 9.7,
+    cpu: 1.66
+  }
+}
+db.products.updateOne({
+_id:4
+}, {
+$set: {
+"spec.ram": 16,
+"spec.screen": 10.7,
+"spec.cpu": 2.66
+}
+})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.products.find({_id: 4}, {name: 1, spec: 1})
+{
+  _id: 4,
+  name: 'SmartPhone',
+  spec: {
+    ram: 16,
+    screen: 10.7,
+    cpu: 2.66
+  }
+}
+db.products.updateOne({_id:4}, {$set: {"storage.0":16, "storage.1": 32}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+db.products.fin({_id:4}, {name:1, storage:1}});
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.products.find({_id:4}, {name:1, storage:1}});
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.products.find({_id:4}, {name:1, storage:1});
+{
+  _id: 4,
+  name: 'SmartPhone',
+  storage: [
+    16,
+    32,
+    10224
+  ]
+}
+use Clase2UpdateMany
+switched to db Clase2UpdateMany
+db.books.insertMany([
+  {"title": "NoSQL Distilled", isbn: "0-4696-7030-4"},
+  {"title": "NoSQL in 7 Days", isbn: "0-4086-6859-8"},
+  {"title": "NoSQL Database", isbn: "0-2504-6932-4"},
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("649e3f7951ccdee8d9676029"),
+    '1': ObjectId("649e3f7951ccdee8d967602a"),
+    '2': ObjectId("649e3f7951ccdee8d967602b")
+  }
+}
+db.books.find()
+{
+  _id: ObjectId("649e3f7951ccdee8d9676029"),
+  title: 'NoSQL Distilled',
+  isbn: '0-4696-7030-4'
+}
+{
+  _id: ObjectId("649e3f7951ccdee8d967602a"),
+  title: 'NoSQL in 7 Days',
+  isbn: '0-4086-6859-8'
+}
+{
+  _id: ObjectId("649e3f7951ccdee8d967602b"),
+  title: 'NoSQL Database',
+  isbn: '0-2504-6932-4'
+}
+db.books.insertMany([
+  {_id: 1, title: "SQL Basics", isbn: "0-0927-6962-8"},
+  {_id: 2, title: "SQL Advance", isbn: "0-1184-7778-1"}
+]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2
+  }
+}
+db.books.find()
+{
+  _id: ObjectId("649e3f7951ccdee8d9676029"),
+  title: 'NoSQL Distilled',
+  isbn: '0-4696-7030-4'
+}
+{
+  _id: ObjectId("649e3f7951ccdee8d967602a"),
+  title: 'NoSQL in 7 Days',
+  isbn: '0-4086-6859-8'
+}
+{
+  _id: ObjectId("649e3f7951ccdee8d967602b"),
+  title: 'NoSQL Database',
+  isbn: '0-2504-6932-4'
+}
+{
+  _id: 1,
+  title: 'SQL Basics',
+  isbn: '0-0927-6962-8'
+}
+{
+  _id: 2,
+  title: 'SQL Advance',
+  isbn: '0-1184-7778-1'
+}
+db.books.insertMany ([
+  {_id:2, title:"SQL Performance Tuning", isbn: "0-6799-2974-6"},
+  {_id:3, title: "SQL Index", isbn: "0-5097-1723-3"}
+]);
+MongoBulkWriteError: E11000 duplicate key error collection: Clase2UpdateMany.books index: _id_ dup key: { _id: 2 }
+db.books.insertMany ([
+  {_id:2, title:"SQL Performance Tuning", isbn: "0-6799-2974-6"},
+  {_id:3, title: "SQL Index", isbn: "0-5097-1723-3"}
+]);
+MongoBulkWriteError: E11000 duplicate key error collection: Clase2UpdateMany.books index: _id_ dup key: { _id: 2 }
+use Clase2DeleteOne
+switched to db Clase2DeleteOne
+db.products.insertMany([
+  { "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+{ "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+{ "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+{ "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+{ "_id" : 5, "name" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 5.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.deleteOne({ _id: 1 })
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+{ "acknowledged" : true, "deletedCount" : 1 }
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.products.deleteOne({})
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+use Clase2DeleteMany
+switched to db Clase2DeleteMany
+db.products.insertMany([
+{ "_id" : 1, "name" : "xPhone", "price" : 799, "releaseDate": ISODate("2011-05-14"), "spec" : { "ram" : 4, "screen" : 6.5, "cpu" : 2.66 },"color":["white","black"],"storage":[64,128,256]},
+{ "_id" : 2, "name" : "xTablet", "price" : 899, "releaseDate": ISODate("2011-09-01") , "spec" : { "ram" : 16, "screen" : 9.5, "cpu" : 3.66 },"color":["white","black","purple"],"storage":[128,256,512]},
+{ "_id" : 3, "name" : "SmartTablet", "price" : 899, "releaseDate": ISODate("2015-01-14"), "spec" : { "ram" : 12, "screen" : 9.7, "cpu" : 3.66 },"color":["blue"],"storage":[16,64,128]},
+{ "_id" : 4, "name" : "SmartPad", "price" : 699, "releaseDate": ISODate("2020-05-14"),"spec" : { "ram" : 8, "screen" : 9.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256,1024]},
+{ "_id" : 5, "name" : "SmartPhone", "price" : 599,"releaseDate": ISODate("2022-09-14"), "spec" : { "ram" : 4, "screen" : 5.7, "cpu" : 1.66 },"color":["white","orange","gold","gray"],"storage":[128,256]}
+])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': 1,
+    '1': 2,
+    '2': 3,
+    '3': 4,
+    '4': 5
+  }
+}
+db.products.deleteMany({ price: 899 })
+{
+  acknowledged: true,
+  deletedCount: 2
+}
+db.products.deleteMany({})
