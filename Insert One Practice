@@ -1,0 +1,302 @@
+use Clase4db
+switched to db Clase4db
+db.prueba.InsertOne ({
+
+"item":"journal",
+"stock": [{
+"warehouse": "A",
+"qty":10
+},
+{ "warehouse": "B",
+"qty":3
+}]
+})
+TypeError: db.prueba.InsertOne is not a function
+db.prueba.insertOne ({
+
+"item":"journal",
+"stock": [{
+"warehouse": "A",
+"qty":10
+},
+{ "warehouse": "B",
+"qty":3
+}]
+})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64b09eaf1c01a495838117e5")
+}
+db.prueba.find()
+{
+  _id: ObjectId("64b09eaf1c01a495838117e5"),
+  item: 'journal',
+  stock: [
+    {
+      warehouse: 'A',
+      qty: 10
+    },
+    {
+      warehouse: 'B',
+      qty: 3
+    }
+  ]
+}
+db.prueba.insertOne({
+  { "_id" : ObjectId("60b97b908ba4299703b5da7d"), "item" : "journal", "instock" : [{ "warehouse" : "A", "qty" : 5}, {"warehouse": C, "qty" : 15}]}
+  { "_id" : ObjectId()} 
+
+})
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.prueba.insertOne({
+  { "_id" : ObjectId("60b97b908ba4299703b5da7d"), "item" : "journal", "instock" : [{ "warehouse" : "A", "qty" : 5}, {"warehouse": C, "qty" : 15}]}
+  { "_id" : ObjectId()} 
+
+})
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.prueba.insertOne({
+  { "_id" : ObjectId("60b97b908ba4299703b5da7d"), "item" : "journal", "instock" : [{ "warehouse" : "A", "qty" : 5}, {"warehouse": C, "qty" : 15}]}
+                    { "_id" : ObjectId("60b97b908ba4299703b5da7e", "item" : "notebook", "instock" : [{ "warehouse" : "C", "qty" : 5}])}
+                                       { "_id" : ObjectId("60b97b908ba4299703b5da7f"), "item" : "paper", "instock" : [{ "warehouse" : "A", "qty" : 60}, {"warehouse" : "B", "qty" : 15}]}
+                                       { "_id": ObjectId("60b97b908ba499703b5da80"), "item" : "planner", "instock" : [{ "warehouse" : "A", "qty" : 40}, { "warehouse" : "B", "qty" : 5}]}
+                                       { "_id" : ObjectId("60b97b908ba4299703b5da81"), "item" : "postcard", "instock" : [{ "warehouse" : "B", "qty" : 15}, { "warehouse" : "C", "qty" : 35}]}
+})
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.prueba.insertOne({
+  { "_id" : ObjectId("60b97b908ba4299703b5da7d"), "item" : "journal", "instock" : [{ "warehouse" : "A", "qty" : 5}, {"warehouse": C, "qty" : 15}]}                 
+})
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.prueba.insertOne({
+  { "_id" : ObjectId("60b97b908ba4299703b5da7e"), "item" : "notebook", "instock" : [{ "warehouse" : "C", "qty" : 5}]
+})
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.prueba.insertOne({
+  { "_id" : ObjectId("60b97b908ba4299703b5da7e"), "item" : "notebook", "instock" : [{ "warehouse" : "C", "qty" : 5}]}
+})
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.prueba.insertOne({
+  { "_id" : ObjectId("60b97b908ba4299703b5da7e"), "item" : "notebook", "instock" : [{ "warehouse" : "C", "qty" : 5}]}
+})
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.prueba.insertOne({
+ {
+  "_id": ObjectId("60b97b908ba4299703b5da7e"),
+  "item": "notebook",
+  "instock": [
+    {
+      "warehouse": "C",
+      "qty": 5
+    }
+  ]
+}
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.prueba.insertOne({
+ {"_id": ObjectId("60b97b908ba4299703b5da7e"),
+  "item": "notebook",
+  "instock": [
+    {
+      "warehouse": "C",
+      "qty": 5 }]}
+                    })
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.inventory.insertOne({
+  { "_id" : ObjectId("60b97b908ba4299703b5da7e"), "item" : "notebook", "instock" : [{ "warehouse" : "C", "qty" : 5}]}
+})
+Error: clone(t={}){const r=t.loc||{};return e({loc:new Position("line"in r?r.line:this.loc.line,"column"in r?r.column:...<omitted>...)} could not be cloned.
+db.inventory.insertOne({
+"item":"journal",
+"instock": [{
+"warehouse": "A",
+"qty":5
+},
+{ "warehouse": "C",
+"qty": 15
+}]
+})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64b0a8bb1c01a495838117e6")
+}
+db.inventory.insertOne({
+"item":"notebook",
+"instock": [{
+"warehouse": "C",
+"qty":5
+}]
+})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64b0a8e41c01a495838117e7")
+}
+db.inventory.insertOne({
+"item":"paper",
+"instock": [{
+"warehouse": "A",
+"qty": 60
+},
+{ "warehouse": "B",
+"qty": 15
+}]
+})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64b0a90c1c01a495838117e8")
+}
+db.inventory.insertOne({
+"item":"planner",
+"instock": [{
+"warehouse": "A",
+"qty": 40
+},
+{ "warehouse": "B",
+"qty": 5
+}]
+})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64b0a92c1c01a495838117e9")
+}
+db.inventory.insertOne({
+"item":"postcard",
+"instock": [{
+"warehouse": "B",
+"qty": 15
+},
+{ "warehouse": "C",
+"qty": 35
+}]
+})
+{
+  acknowledged: true,
+  insertedId: ObjectId("64b0a94b1c01a495838117ea")
+}
+db.inventario.find({"instock.warehouse" : "A"})
+db.inventario.find({"instock.warehouse" : "C"})
+db.inventario.find({"instock.0.warehouse" : "C"})
+db.inventario.find({"instock.0.warehouse" : "C"})
+db.inventario.find({"instock.1.warehouse" : "C"})
+db.inventory.find({"instock.warehouse":"A"})
+{
+  _id: ObjectId("64b0a8bb1c01a495838117e6"),
+  item: 'journal',
+  instock: [
+    {
+      warehouse: 'A',
+      qty: 5
+    },
+    {
+      warehouse: 'C',
+      qty: 15
+    }
+  ]
+}
+{
+  _id: ObjectId("64b0a90c1c01a495838117e8"),
+  item: 'paper',
+  instock: [
+    {
+      warehouse: 'A',
+      qty: 60
+    },
+    {
+      warehouse: 'B',
+      qty: 15
+    }
+  ]
+}
+{
+  _id: ObjectId("64b0a92c1c01a495838117e9"),
+  item: 'planner',
+  instock: [
+    {
+      warehouse: 'A',
+      qty: 40
+    },
+    {
+      warehouse: 'B',
+      qty: 5
+    }
+  ]
+}
+db.inventory.find({"instock.warehouse":"C"})
+{
+  _id: ObjectId("64b0a8bb1c01a495838117e6"),
+  item: 'journal',
+  instock: [
+    {
+      warehouse: 'A',
+      qty: 5
+    },
+    {
+      warehouse: 'C',
+      qty: 15
+    }
+  ]
+}
+{
+  _id: ObjectId("64b0a8e41c01a495838117e7"),
+  item: 'notebook',
+  instock: [
+    {
+      warehouse: 'C',
+      qty: 5
+    }
+  ]
+}
+{
+  _id: ObjectId("64b0a94b1c01a495838117ea"),
+  item: 'postcard',
+  instock: [
+    {
+      warehouse: 'B',
+      qty: 15
+    },
+    {
+      warehouse: 'C',
+      qty: 35
+    }
+  ]
+}
+db.inventory.find({"instock.0.warehouse":"C"})
+{
+  _id: ObjectId("64b0a8e41c01a495838117e7"),
+  item: 'notebook',
+  instock: [
+    {
+      warehouse: 'C',
+      qty: 5
+    }
+  ]
+}
+db.inventory.find({"instock.1.warehouse":"C"})
+{
+  _id: ObjectId("64b0a8bb1c01a495838117e6"),
+  item: 'journal',
+  instock: [
+    {
+      warehouse: 'A',
+      qty: 5
+    },
+    {
+      warehouse: 'C',
+      qty: 15
+    }
+  ]
+}
+{
+  _id: ObjectId("64b0a94b1c01a495838117ea"),
+  item: 'postcard',
+  instock: [
+    {
+      warehouse: 'B',
+      qty: 15
+    },
+    {
+      warehouse: 'C',
+      qty: 35
+    }
+  ]
+}
+Atlas atlas-gfz9az-shard-0 [primary] Clase4db
+Selection deleted
+
